@@ -5,8 +5,9 @@ var last_marker_position
 var edit_mode = true
 
 func _process(delta):
-	if Input.is_action_pressed("rotate"):
-		$FPController.global_rotation.y += 5 * delta
+	# TODO: better room rotation
+	if Input.is_action_just_pressed("rotate"):
+		$FPController.global_rotation.y = -$FPController/ARVRCamera.rotation.y
 	
 	# Move the floor mesh down if needed (shouldn't be - guardian does this automatically)
 	var lowest_controller_y = $FPController/RightHandController.global_translation.y
