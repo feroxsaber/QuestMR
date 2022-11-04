@@ -7,9 +7,9 @@ trailer](https://www.youtube.com/watch?v=qyzzdMkU7Fw&t=18s).
 
 ## Features
 ### Implemented
+- Very basic room setup
 
 ### In Progress
-- Basic room setup (floor position, wall positions, etc...)
 - Separate edit and normal modes
 
 ### To-do

@@ -8,11 +8,11 @@ size = Vector3( 0.2, 0.2, 0.2 )
 
 [sub_resource type="SpatialMaterial" id=2]
 flags_transparent = true
-albedo_color = Color( 0.815686, 0, 1, 0.0745098 )
+albedo_color = Color( 0.815686, 0, 1, 0.462745 )
 
 [sub_resource type="CubeMesh" id=3]
 material = SubResource( 2 )
-size = Vector3( 100, 0.001, 100 )
+size = Vector3( 1, 0.001, 1 )
 
 [sub_resource type="BoxShape" id=4]
 extents = Vector3( 50, 0.005, 50 )
@@ -30,21 +30,12 @@ far = 1000.0
 mesh = SubResource( 1 )
 
 [node name="MeshInstance" type="MeshInstance" parent="FPController/RightHandController" index="0"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 0 )
 mesh = SubResource( 1 )
 skeleton = NodePath("../../LeftHandController")
 
 [node name="RayCast" type="RayCast" parent="FPController/RightHandController" index="1"]
 enabled = true
-cast_to = Vector3( 0, 0, 1 )
-
-[node name="FloorMesh" type="MeshInstance" parent="."]
-mesh = SubResource( 3 )
-
-[node name="StaticBody" type="StaticBody" parent="FloorMesh"]
-
-[node name="CollisionShape" type="CollisionShape" parent="FloorMesh/StaticBody"]
-shape = SubResource( 4 )
+cast_to = Vector3( 0, 0, -1000 )
 
 [node name="HUD" type="Control" parent="."]
 margin_right = 452.0
@@ -58,6 +49,15 @@ margin_bottom = 59.0
 text = "QuestMR
 Alpha Version"
 
-[node name="RoomSetup" type="Spatial" parent="."]
+[node name="RoomGeometry" type="Spatial" parent="."]
+
+[node name="FloorMesh" type="MeshInstance" parent="RoomGeometry"]
+mesh = SubResource( 3 )
+skeleton = NodePath("../..")
+
+[node name="StaticBody" type="StaticBody" parent="RoomGeometry/FloorMesh"]
+
+[node name="CollisionShape" type="CollisionShape" parent="RoomGeometry/FloorMesh/StaticBody"]
+shape = SubResource( 4 )
 
 [editable path="FPController"]
