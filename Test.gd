@@ -1,11 +1,10 @@
 extends Spatial
 
-var placing_marker = 1
+var placing_marker = 0
 var last_marker_position
-var edit_mode = true
+var edit_mode = false
 
 func _process(delta):
-	# TODO: better room rotation
 	if Input.is_action_just_pressed("rotate"):
 		$FPController.global_rotation.y = -$FPController/ARVRCamera.rotation.y
 	
@@ -17,6 +16,11 @@ func _process(delta):
 		$RoomGeometry/FloorMesh.global_translation.y = lowest_controller_y
 	
 	if edit_mode:
+		if Input.is_action_just_pressed("edit"):
+			edit_mode = false
+			placing_marker = 0
+			
+		$RoomGeometry.show()
 		# TODO: set last_marker_position to marker position when user places wall marker
 		
 		var marker
@@ -103,4 +107,8 @@ func _process(delta):
 			wall_mesh.get_node("MeshInstance").mesh = mesh
 			wall_mesh.get_node("MeshInstance").translation.x = wall_size.x / 2
 			wall_mesh.get_node("MeshInstance").translation.z = wall_size.z / 2
-			
+	else:
+		$RoomGeometry.hide()
+		if Input.is_action_just_pressed("edit"):
+			edit_mode = true
+			placing_marker = 1

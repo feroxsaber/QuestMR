@@ -10,11 +10,10 @@ trailer](https://www.youtube.com/watch?v=qyzzdMkU7Fw&t=18s).
 - Very basic room setup
 
 ### In Progress
-- Separate edit and normal modes
 
 ### To-do
 - Put viewports on placed walls
-- Make room geometry disappear when not editing room or window positions
+- Separate tools for edit mode (wall edit, window edit, furniture edit, etc...)
 - Save room geometry and have a way to restore it after restarting application
 
 ### Backburner
