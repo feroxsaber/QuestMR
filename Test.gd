@@ -84,15 +84,15 @@ func _process(delta):
 			# Get the position difference between this marker and the last
 			var delta_x = marker.global_translation.x - last_marker_position.x 
 			var delta_z = marker.global_translation.z - last_marker_position.z
-			var wall_size = Vector3(0.01, 10, 0.01)
+			var wall_size = Vector3(0.001, 3, 0.001)
 			
 			# Snap to either the X or Z axis
 			# TODO: angled walls?
 			if(abs(delta_x) > abs(delta_z)):
 				wall_size.x = delta_x
-				wall_size.z = 0.01
+				wall_size.z = 0.001
 			else:
-				wall_size.x = 0.01
+				wall_size.x = 0.001
 				wall_size.z = delta_z
 			
 			# Create a new mesh for the wall and add it
